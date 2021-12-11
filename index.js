@@ -53,6 +53,7 @@ const mgrQuestions = () => {
         } else if (mgrData.newEmployee === 'Engineer') {
             return engQuestions();
         } else {
+            console.log(teamArr);
             return //start generating file
         }
         
@@ -61,6 +62,13 @@ const mgrQuestions = () => {
 
 //Questions for the Engineer(if selected)
 const engQuestions = () => {
+
+    console.log(`
+    ===============
+    Add an Engineer
+    ===============
+    `);
+
     return inquirer.prompt([
         {
             type: 'input',
@@ -99,6 +107,7 @@ const engQuestions = () => {
         } else if (engData.newEmployee === 'Engineer') {
             return engQuestions();
         } else {
+            console.log(teamArr);
             return //start generating file
         }
         
@@ -108,6 +117,13 @@ const engQuestions = () => {
 
 //Questions for the Intern(if selected)
 const internQuestions = () => {
+
+    console.log(`
+    =============
+    Add an Intern
+    =============
+    `);
+
     return inquirer.prompt([
         {
             type: 'input',
@@ -147,35 +163,27 @@ const internQuestions = () => {
         } else if (internData.newEmployee === 'Engineer') {
             return engQuestions();
         } else {
-            return //start generating file
+            console.log(teamArr);
+            return teamArr //start generating file
         }
         
     });
 };
 
-//Options Menu (initiated after Mgr Prompt)
-// const userMenu = () => {
-//     inquirer.prompt([
-//         {
-//             type: 'list',
-//             name: 'employeeType',
-//             choices: ["Intern", "Engineer", "The Team Is Complete!"],
-//             message: "Please choose an employee to add to your team."
-//         },
-//     ])
-//     .then( answer => {
-//         const {employeeType} = answer
-
-        
-       
-//     });
-
-// };
+const generateHTML = () => {
+    
+}
 
 const createTeam = () => {
     mgrQuestions()
+    .then(teamArr => {
+        return generateHTML(teamArr);
+    })
 };
+
+
 
 //Start Application
 createTeam()
+
 
