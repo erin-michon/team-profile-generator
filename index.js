@@ -3,8 +3,12 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const { writeFile }  = require('./src/writeFile');
+const { createTeamPage, generateMgr, generateIntern } = require('./src/page-template');
+const Employee = require('./lib/Employee');
 
 const teamArr = [];
+const cardArr =  [];
 
 //Questions for the Manager (initial prompt)
 const mgrQuestions = () => {
@@ -53,8 +57,7 @@ const mgrQuestions = () => {
         } else if (mgrData.newEmployee === 'Engineer') {
             return engQuestions();
         } else {
-            console.log(teamArr);
-            return //start generating file
+            return teamArr //start generating file
         }
         
     });
@@ -107,8 +110,7 @@ const engQuestions = () => {
         } else if (engData.newEmployee === 'Engineer') {
             return engQuestions();
         } else {
-            console.log(teamArr);
-            return //start generating file
+            return teamArr //start generating file
         }
         
     });
@@ -163,27 +165,59 @@ const internQuestions = () => {
         } else if (internData.newEmployee === 'Engineer') {
             return engQuestions();
         } else {
-            console.log(teamArr);
             return teamArr //start generating file
         }
         
     });
 };
 
-const generateHTML = () => {
-    
-}
+//Create team cards based on TeamArr from user input
+
+const createTeamCards = (teamArr) => {
+
+    console.log(teamArr);
+    teamArr.forEach(employee => {
+        
+        if (employee.getRole() === 'Manager') {
+            console.log('manager team member identified');
+            cardArr.push(generateMgr(employee));         
+        }
+        if (employee.getRole() === 'Engineer') {
+            console.log('engineer team member identified');
+            cardArr.push(generateEng(employee)); 
+        }
+        if (employee.getRole() === 'Intern') {
+            console.log('intern team member identified')
+            cardArr.push(generateIntern(employee)); 
+        }
+    });
+
+
+
+    const teamCards = cardArr.join('');
+    console.log(teamCards);
+    return teamCards;
+
+};
+
+//createTeam is the function that runs/initializes the whole program.
 
 const createTeam = () => {
     mgrQuestions()
     .then(teamArr => {
-        return generateHTML(teamArr);
+        return createTeamCards(teamArr);
+    })
+    .then(teamCards => {
+        return createTeamPage(teamCards);
+    })
+    .then(fileContent => {
+        return writeFile(fileContent);
     })
 };
 
 
 
 //Start Application
-createTeam()
+createTeam();
 
 

@@ -2,7 +2,9 @@
 
 //Generate Manager Card
 
-const generateMgr = function (mgrData) {
+const generateMgr = function (manager) {
+
+    
 
     return `
     <div class="card" style="width: 18rem;">
@@ -22,7 +24,7 @@ const generateMgr = function (mgrData) {
 }
 
 //Generate Engineer Card
-const generateEng = function (engData) {
+const generateEng = function (engineer) {
 
     return `
 
@@ -43,7 +45,7 @@ const generateEng = function (engData) {
 }
 
 //Generate Intern Card
-const generateIntern = function (internData) {
+const generateIntern = function (intern) {
 
     return `
 
@@ -66,9 +68,7 @@ const generateIntern = function (internData) {
 //populate sections based on user input (TeamArr)
 //generate HTML page (export module)
 
-
-
-const createTeamPage = function () {
+const createTeamPage = function (teamCards) {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -93,7 +93,7 @@ const createTeamPage = function () {
     
                 <!-- This is where the cards will be generated and displayed -->
     
-               
+                ${teamCards}
     
             </div>
         </div>
@@ -105,3 +105,6 @@ const createTeamPage = function () {
     `
 
 }
+
+
+module.exports = { createTeamPage, generateIntern, generateMgr, generateMgr};
