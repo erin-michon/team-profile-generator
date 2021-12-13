@@ -3,8 +3,8 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const { writeFile }  = require('./src/writeFile');
-const { createTeamPage, generateMgr, generateIntern } = require('./src/page-template');
+const fs = require('fs');
+const { createTeamPage, generateIntern, generateMgr, generateEng } = require('./src/page-template');
 
 const teamArr = [];
 const cardArr =  [];
@@ -173,34 +173,43 @@ const internQuestions = () => {
 //Create team cards based on TeamArr from user input
 
 const createTeamCards = (teamArr) => {
-
-    console.log(teamArr);
-    teamArr.forEach(employee => {
+    
+     teamArr.forEach(employee => {
         
         if (employee.getRole() === 'Manager') {
-            console.log('manager team member identified');
             cardArr.push(generateMgr(employee));         
         }
         if (employee.getRole() === 'Engineer') {
-            console.log('engineer team member identified');
             cardArr.push(generateEng(employee)); 
         }
         if (employee.getRole() === 'Intern') {
-            console.log('intern team member identified')
             cardArr.push(generateIntern(employee)); 
         }
     });
 
-
-
     const teamCards = cardArr.join('');
-    console.log(teamCards);
     return teamCards;
 
 };
 
-//createTeam is the function that runs/initializes the whole program.
+// Writing file
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+      fs.writeFile('./dist/index.html', fileContent, err => {
+        if (err) {
+          reject(err);
+          return;
+        }
+  
+        resolve({
+          ok: true,
+          message: 'Congratulations!  The Team Profile HTML File has been created!'
+        });
+      });
+    });
+};
 
+//createTeam is the function that runs/initializes the whole program.
 const createTeam = () => {
     mgrQuestions()
     .then(teamArr => {
@@ -213,8 +222,6 @@ const createTeam = () => {
         return writeFile(fileContent);
     })
 };
-
-
 
 //Start Application
 createTeam();

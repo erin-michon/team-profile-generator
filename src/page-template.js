@@ -105,4 +105,4 @@ const createTeamPage = function (teamCards) {
 }
 
 //Export functions to be called on index.js
-module.exports = { createTeamPage, generateIntern, generateMgr, generateMgr};
+module.exports = { createTeamPage, generateIntern, generateMgr, generateEng};

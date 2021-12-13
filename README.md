@@ -12,7 +12,7 @@ This is a command line application that allows for a user to enter team informat
 
 * Please click the link below to see a demonstration of how this application works:
  
-    [Application Demo Video](https://watch.screencastify.com/v/7Z2fnaFxiIT2CpWboGaq)
+    [Application Demo Video](https://watch.screencastify.com/v/0wrJsXcsGVSCfGgeXSWS)
 
 ## Questions:
 Please do not hesitate to reach out to me directly with additional questions via my email address or Github Profile below:
