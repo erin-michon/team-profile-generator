@@ -5,7 +5,6 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const { writeFile }  = require('./src/writeFile');
 const { createTeamPage, generateMgr, generateIntern } = require('./src/page-template');
-const Employee = require('./lib/Employee');
 
 const teamArr = [];
 const cardArr =  [];

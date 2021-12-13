@@ -1,7 +1,6 @@
 const fs = require('fs');
 
-// writing file
-
+// Writing file
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
       fs.writeFile('./dist/index.html', fileContent, err => {
@@ -17,5 +16,6 @@ const writeFile = fileContent => {
       });
     });
   };
-  
+
+  //Export function to be called on index.js
   module.exports =  { writeFile };

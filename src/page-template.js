@@ -1,7 +1,7 @@
-//Generate sections based on class (employee type)
 
+
+//Generate HTML sections based on class (employee type)
 //Generate Manager Card
-
 const generateMgr = function (manager) {
 
     
@@ -65,9 +65,7 @@ const generateIntern = function (intern) {
 
 }
 
-//populate sections based on user input (TeamArr)
-//generate HTML page (export module)
-
+//Generate Full HTML page
 const createTeamPage = function (teamCards) {
     return `
     <!DOCTYPE html>
@@ -106,5 +104,5 @@ const createTeamPage = function (teamCards) {
 
 }
 
-
+//Export functions to be called on index.js
 module.exports = { createTeamPage, generateIntern, generateMgr, generateMgr};
