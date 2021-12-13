@@ -7,7 +7,6 @@ This is a command line application that allows for a user to enter team informat
 * Classes and constructor methods were created for each employee object; please refer to the lib folder.
 * Jest was utilized as a testing framework as TDD (Test-driven Development) was utilzied during the creation of each class; please refer to the __tests__ folder.
 
-![image info](./assets/images/failedtest.PNG)
 ![image info](./assets/images/passedtests.JPG)
 
 * Please click the link below to see a demonstration of how this application works:
